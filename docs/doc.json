@@ -10,7 +10,7 @@
   },
   "info": {
     "title": "Assignment",
-    "description": "You set up an express server and build the routes /users and /users/{id} (both GET) such that:\n A user with role “admin” get the entire users array in response  when he hits /users and get the corresponding user object in response when he hits /users/{id}\n A user with role “guest” only gets his own object in an array in response when he hits /users and and when he is sending his own id in /users/{id} only then he gets his own user object in response, otherwise, he gets permission denied message in response.\n\nUse HTTP Basic authentication for admin user and none for guest user.\n",
+    "description": "You set up an express server and build the routes /users and /users/{id} (both GET) such that: <br/><br /><br /> A user with role “admin” get the entire users array in response  when he hits /users and get the corresponding user object in response when he hits /users/{id}<br /><br /> A user with role “guest” only gets his own object in an array in response when he hits /users and and when he is sending his own id in /users/{id} only then he gets his own user object in response, otherwise, he gets permission denied message in response.<br /><br /><br />Use HTTP Basic authentication for admin user and none for guest user.<br />",
     "version": "1.0.0"
   },
   "servers": [
@@ -27,7 +27,94 @@
           }
         ],
         "responses": {
-
+          "default": {
+            "content": {
+              "200": {
+                "examples": {
+                  "success": {
+                    "value": {
+                      "success": true,
+                      "users": [
+                        {
+                          "id": 1,
+                          "name": "Leanne Graham",
+                          "type": "admin",
+                          "username": "Bret",
+                          "email": "Sincere@april.biz",
+                          "address": {
+                            "street": "Kulas Light",
+                            "suite": "Apt. 556",
+                            "city": "Gwenborough",
+                            "zipcode": "92998-3874",
+                            "geo": {
+                              "lat": "-37.3159",
+                              "lng": "81.1496"
+                            }
+                          },
+                          "phone": "1-770-736-8031 x56442",
+                          "website": "hildegard.org",
+                          "company": {
+                            "name": "Romaguera-Crona",
+                            "catchPhrase": "Multi-layered client-server neural-net",
+                            "bs": "harness real-time e-markets"
+                          }
+                        },
+                        {
+                          "id": 2,
+                          "name": "Ervin Howell",
+                          "type": "guest",
+                          "username": "Antonette",
+                          "email": "Shanna@melissa.tv",
+                          "address": {
+                            "street": "Victor Plains",
+                            "suite": "Suite 879",
+                            "city": "Wisokyburgh",
+                            "zipcode": "90566-7771",
+                            "geo": {
+                              "lat": "-43.9509",
+                              "lng": "-34.4618"
+                            }
+                          },
+                          "phone": "010-692-6593 x09125",
+                          "website": "anastasia.net",
+                          "company": {
+                            "name": "Deckow-Crist",
+                            "catchPhrase": "Proactive didactic contingency",
+                            "bs": "synergize scalable supply-chains"
+                          }
+                        },
+                        {
+                          "id": 3,
+                          "name": "Clementine Bauch",
+                          "type": "guest",
+                          "username": "Samantha",
+                          "email": "Nathan@yesenia.net",
+                          "address": {
+                            "street": "Douglas Extension",
+                            "suite": "Suite 847",
+                            "city": "McKenziehaven",
+                            "zipcode": "59590-4157",
+                            "geo": {
+                              "lat": "-68.6102",
+                              "lng": "-47.0653"
+                            }
+                          },
+                          "phone": "1-463-123-4447",
+                          "website": "ramiro.info",
+                          "company": {
+                            "name": "Romaguera-Jacobson",
+                            "catchPhrase": "Face to face bifurcated interface",
+                            "bs": "e-enable strategic applications"
+                          }
+                        }
+                      ]
+                    }
+                  }
+                }
+              }
+            },
+            "description": "SUCCESS"
+          }
         },
         "description": "GET ALL USERS WHICH ARE ALLOWED TO BE ACCESSED"
       }
@@ -39,7 +126,35 @@
             "content": {
               "200": {
                 "examples": {
-                  "s": {}
+                  "success": {
+                    "value": {
+                      "success": true,
+                      "user": {
+                        "id": 1,
+                        "name": "Leanne Graham",
+                        "type": "admin",
+                        "username": "Bret",
+                        "email": "Sincere@april.biz",
+                        "address": {
+                          "street": "Kulas Light",
+                          "suite": "Apt. 556",
+                          "city": "Gwenborough",
+                          "zipcode": "92998-3874",
+                          "geo": {
+                            "lat": "-37.3159",
+                            "lng": "81.1496"
+                          }
+                        },
+                        "phone": "1-770-736-8031 x56442",
+                        "website": "hildegard.org",
+                        "company": {
+                          "name": "Romaguera-Crona",
+                          "catchPhrase": "Multi-layered client-server neural-net",
+                          "bs": "harness real-time e-markets"
+                        }
+                      }
+                    }
+                  }
                 }
               }
             },
@@ -48,6 +163,7 @@
         },
         "parameters": [
           {
+            "example": 1,
             "in": "path",
             "name": "id",
             "description": "ID of the user to fetch"
