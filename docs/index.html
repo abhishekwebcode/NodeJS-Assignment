@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8"/>
+    <title>DOCUMENTATION</title>
+</head>
+<body>
+<div id="swagger-ui"></div>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.css" integrity="sha512-sFCybMLlCEgtHSq/iUUG/HL4PKfg5l/qlA2scyRpDWTZU8hWOomj/CrOTxpi9+w8rODDy+crxi2VxhLZ+gehWg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui.js" integrity="sha512-O8EDrlgIrjWc4w4w53d4JP2pGZbSW4tgmTSjN+fff5LuRtxUEKqUgTCJsZGRBsJXlYnLaJSn9QydYz/qZqGs5A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-bundle.js" integrity="sha512-eMCaaS1NeViiTEtjn6m1xogOzNaIEuZ55WXHiTVo5V0ZipQSgs1lOn4ry7MRO34YlK2peQA4cZGUbVEvyfg/4w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/swagger-ui/4.1.0/swagger-ui-standalone-preset.js" integrity="sha512-tgEpXQXe1VQOK8Yu3LRVgaxH1tDpBv0gxC6/tZcDQSiTARrLZz/AwM9kZM7VWkab/8CEv47ZpAh4eHUJfxcYHA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+
+<script>
+    fetch(
+      "/docs/swagger.json"
+    )
+      .then((e) => e.json())
+      .then((swaggerSPEC) => {
+        const ui = SwaggerUIBundle({
+          spec: swaggerSPEC,
+          dom_id: "#swagger-ui",
+          deepLinking: true,
+          presets: [
+            SwaggerUIBundle.presets.apis,
+            SwaggerUIStandalonePreset,
+          ],
+          plugins: [SwaggerUIBundle.plugins.DownloadUrl],
+          layout: "StandaloneLayout",
+        });
+      });
+</script>
+</body>
+</html>

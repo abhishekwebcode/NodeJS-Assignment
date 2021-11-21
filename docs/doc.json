@@ -1,0 +1,65 @@
+{
+  "openapi": "3.0.3",
+  "components": {
+    "securitySchemes": {
+      "basicAuth": {
+        "type": "http",
+        "scheme": "basic"
+      }
+    }
+  },
+  "info": {
+    "title": "Assignment",
+    "description": "You set up an express server and build the routes /users and /users/{id} (both GET) such that:\n A user with role “admin” get the entire users array in response  when he hits /users and get the corresponding user object in response when he hits /users/{id}\n A user with role “guest” only gets his own object in an array in response when he hits /users and and when he is sending his own id in /users/{id} only then he gets his own user object in response, otherwise, he gets permission denied message in response.\n\nUse HTTP Basic authentication for admin user and none for guest user.\n",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "http://localhost:3000"
+    }
+  ],
+  "paths": {
+    "/users": {
+      "get": {
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "responses": {
+
+        },
+        "description": "GET ALL USERS WHICH ARE ALLOWED TO BE ACCESSED"
+      }
+    },
+    "/users/{id}": {
+      "get": {
+        "responses": {
+          "default": {
+            "content": {
+              "200": {
+                "examples": {
+                  "s": {}
+                }
+              }
+            },
+            "description": ""
+          }
+        },
+        "parameters": [
+          {
+            "in": "path",
+            "name": "id",
+            "description": "ID of the user to fetch"
+          }
+        ],
+        "security": [
+          {
+            "basicAuth": []
+          }
+        ],
+        "description": "ACCESS SPECIFIC USER"
+      }
+    }
+  }
+}
